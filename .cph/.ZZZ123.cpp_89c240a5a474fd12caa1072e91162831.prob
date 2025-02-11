@@ -1,0 +1,1 @@
+{"name":"Local: ZZZ123","url":"c:\\Users\\Dell\\Desktop\\DSA_CODEPTIT\\ZZZ123.cpp","tests":[{"id":1739176115513,"input":"2\n\n5\n\n7","output":"4 4 5 5 6\n9 9 9 2 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Dell\\Desktop\\DSA_CODEPTIT\\ZZZ123.cpp","group":"local","local":true}

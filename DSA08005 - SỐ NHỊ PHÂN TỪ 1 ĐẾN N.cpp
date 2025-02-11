@@ -11,15 +11,15 @@ int main() {
     while(tc--) {
         int n; cin >> n;
         queue<string> qe;
-        qe.push("9");
-        while(!qe.empty()) {
+        qe.push("1");
+        while(!qe.empty() && n > 0) {
             string s = qe.front(); qe.pop();
-            if(stoll(s) % n == 0) {
-                cout << s << endl;
-                break;
+            cout << s << " ";
+            n--;
+            if(s.size() <= n) {
+                qe.push(s + "0");
+                qe.push(s + "1");
             }
-            qe.push(s + "0");
-            qe.push(s + "9");
         }
         cout << endl;
     }
