@@ -7,16 +7,16 @@ typedef long long ll;
 
 int main() {
 	int tc; cin >> tc;
-    while(tc--) {
-		string a, b; cin >> a >> b;
-		ll num1 = 0, num2 = 0;
-		for(int i = a.size() - 1; i >= 0; i--) {
-			num1 += (a[i] - '0') << (a.size() - i - 1);
+	while(tc--) {
+		int n; cin >> n;
+		for(int i = 0; i < (1 << n); i++) {
+			int x = i ^ (i >> 1);
+			bitset<10> bit(x);
+			string s = bit.to_string();
+			for(int i = 10 - n; i < 10; i++) cout << s[i];
+			cout << " ";
 		}
-		for(int i = b.size() - 1; i >= 0; i--) {
-			num2 += (b[i] - '0') << (b.size() - i - 1);
-		}
-		cout << num1 * num2 << endl;
-    }
-	return 0;
+		cout << endl;
+	}
+    return 0;
 }
