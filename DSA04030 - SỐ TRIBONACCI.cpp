@@ -1,13 +1,11 @@
 #include<iostream>
 using namespace std;
 typedef long long ll;
-ll MOD = 1000000000000007;
+ll MOD = 1e15 + 7;
 ll M[5] = { 1,3,6,12,23 };
 
-#define AnhLM027 "Le Minh Anh"
-
 /*
- - Sn: Tổng từ T1 - Tn
+ - Sn: T?ng t? T1 - Tn
  - Sn = T1 + T2 + T3 + ... + Tn
  - 		3 * Sn = T1 + T2 + T3 + T4 + ... + Tn-1 + Tn
 				    + T1 + T2 + T3 + ... + Tn-2 + Tn-1 + Tn
@@ -52,7 +50,7 @@ matran Pow(matran X, ll k) {
     else return tmp * tmp * X;
 }
 
-ll Tribonaci(ll n) {
+ll Tribonacci(ll n) {
     if (n <= 3) return M[n - 1];
     matran X;
     matran S = Pow(X, n + 2);
@@ -63,6 +61,6 @@ int main() {
     int t; cin >> t;
     while (t--) {
         ll n; cin >> n;
-        cout << Tribonaci(n) << endl;
+        cout << Tribonacci(n) << endl;
     }
 }
