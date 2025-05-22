@@ -1,7 +1,14 @@
 {
     "files.associations": {
+        "ostream": "cpp",
         "iostream": "cpp",
-        "cmath": "cpp",
-        "chrono": "cpp"
+        "valarray": "cpp",
+        "vector": "cpp",
+        "bitset": "cpp",
+        "set": "cpp",
+        "format": "cpp",
+        "string": "cpp",
+        "new": "cpp",
+        "random": "cpp"
     }
 }
