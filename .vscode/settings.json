@@ -18,6 +18,7 @@
         "span": "cpp",
         "stacktrace": "cpp",
         "regex": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "variant": "cpp"
     }
 }

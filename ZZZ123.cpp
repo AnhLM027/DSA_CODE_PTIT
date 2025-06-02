@@ -1,59 +1,76 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <set>
+#include <map>
+#include <stack>
+#include <queue>
+#include <unordered_map>
+#include <fstream>
+#include <algorithm>
 using namespace std;
-typedef long long ll;
-
-#define AnhLM027 "Lê Minh Anh"
 
 #define maxn 105
 
 
+int n, st;
+int a[maxn][maxn] = {};
+bool vis[maxn] = {};
+vector<int> ke[maxn];
+vector<vector<int>> res;
+
+void DFS(int u) {
+    vis[u] = true;
+    for(int v : ke[u]) {
+        if(!vis[v]) {
+            res.push_back({u, v});
+            DFS(v);
+        }
+    }
+}
+
+void BFS() {
+    for(bool& b : vis) b = false;
+
+    queue<int> qe;
+    qe.push(st);
+    
+    vis[st] = true;
+    
+    while(!qe.empty()) {
+        int u = qe.front(); qe.pop();
+        for(int v : ke[u]) {
+            if(!vis[v]) {
+                res.push_back({u, v});
+                vis[v] = true;
+                qe.push(v); 
+            }
+        }
+    }
+}
 
 int main() {
-    int tc; cin >> tc;
-	while(tc--) {
-		int V, E, M;
-		int colors[maxn];
-		vector<int> dske[maxn];
-		cin >> V >> E >> M;
-		
-		for(int i = 1; i <= E; i++) {
-			int x, y; cin >> x >> y;
-			dske[x].push_back(y);
-			dske[y].push_back(x);
-		}
-		
-		vector<int> a;
-		for(int i = 1; i <= V; i++) a.push_back(i);
+    freopen("CK.INP", "r", stdin);
+    freopen("CK.OUT", "w", stdout);
+    int k; cin >> k >> n >> st;
+    
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= n; j++) {
+            cin >> a[i][j];
+            if(a[i][j]) {
+                ke[i].push_back(j);
+                //ke[j].push_back(i);
+            }
+        }
+    }
+    
+    if(k == 1) DFS(st);
+    else BFS();
 
-		sort(a.begin(), a.end(), [&](int b, int c) -> bool {
-			return dske[b].size() > dske[c].size();
-		});
-		
-		int color = 1;
-		while(a.size()) {
-			int u = a[0];
-			colors[u] = color;
-
-			vector<int> b;
-			for(int i = 0; i < a.size(); i++) {
-				if(a[i] == u) continue;
-
-				bool check = true;
-				for(int v : dske[a[i]]) {
-					if(v == u) check = false;
-				}
-
-				if(check) colors[a[i]] = color;
-				else {
-					b.push_back(a[i]);
-				}
-			}
-			color++;
-			a = b;
-		}
-		if(color - 1 <= M) cout << "YES" << endl;
-		else cout << "NO" << endl;
-	}
-	
-	return 0;
+    if(res.size() == n - 1) {
+        cout << res.size() << endl;
+        for(vector<int> v : res) cout << v[0] << "  " << v[1] << endl;
+    }
+    else cout << "0" << endl;
+    
+    return 0;
 }
